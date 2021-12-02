@@ -7,11 +7,17 @@
 
   // onMount lifecycle
   onMount(async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
-    dataUsers = await response.json();
-
-    // when data fetching is done
-    isFetching = false;
+    try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      dataUsers = await response.json();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      // when data fetching is done
+      isFetching = false;
+    }
   });
 </script>
 
