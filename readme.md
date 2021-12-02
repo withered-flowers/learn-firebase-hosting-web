@@ -139,9 +139,130 @@ Kemudian kita bisa melihat aplikasi yang sudah jalan dalam mode production ini p
 
 Perhatikan port yang digunakan berbeda (development pada port 3000 dan production di port 5000)
 
-### Hosting Aplikasi
+(Demo aplikasi untuk production juga dapat dilihat pada https://040an5al6bjqbbv6vq7vb2cg6qt8on6144rs180fa4s36ne4sjds7q8.siasky.net/)
 
+Selanjutnya kita akan memasuki bagian terpenting dari pembelajaran ini: Hosting aplikasi ke Firebase Hosting !
+
+### Hosting Aplikasi
+(Pastikan pada langkah ini, Anda sudah memiliki sebuah akun GMail dan firebase cli sudah terpasang !)
+Apabila belum memiliki akun GMail bisa membuat akun GMail di https://accounts.google.com/signup/
+Apabila belum memasang firebase cli, dapat dilihat panduannya di https://firebase.google.com/docs/cli?hl=id
+
+Pertama-tama yang harus dilakukan adalah kita harus melakukan login terlebih dahulu ke dalam firebase cli.
+
+Login dapat dilakukan dengan perintah
+
+```bash
+firebase login
+```
+
+Ketika perintah ini dijalankan, maka akan diminta untuk membuka browser untuk melakukan login akun GMail yang dimiliki.
+
+(Apabila diminta untuk memperbolehkan Firebase untuk mengambil data penggunaan CLI, pilih saja No)
+
+![Image Firebase CLI](/assets/image02.png)
+
+(Apabila diminta untuk percaya terhadap Firebase CLI, pilih saja Allow)
+
+![Image Firebase Authenticate](/assets/image03.png)
+
+Apabila berhasil login, akan muncul tulisan seperti berikut
+```bash
+✔  Success! Logged in as xxx@gmail.com
+```
+
+Selanjutnya kita akan memulai untuk inisialisasi project hosting Firebase.
+
+Hal ini dapat dilakukan dengan perintah
+```bash
+firebase init hosting
+```
+
+**Pastikan** melakukan perintah di atas, pada folder `sources` yang ada di repositori yang sudah diclone (`.../learn-firebase-hosting-web/sources`)
+
+Kemudian kita akan diberikan opsi opsi sebagai berikut
+```bash
+# Pilih opsi yang digunakan
+# kita akan membuat projek yang baru
+Please select an option: `Create a new project`
+
+# Masukkan nama project id yang kita inginkan
+# Tidak bisa diganti !
+Please specify a unique project id: `Silakan masukkan project id (bebas)`
+
+# Masukkan nama project
+# bila tidak diisi, akan mengacu pada unique project id di atas
+What would you like to call your project? (defaults to your project ID)? `Silakan masukkan nama project (bebas)`
+
+# Pilih folder utama yang akan digunakan untuk hosting
+# Karena pada saat melakukan npm run build tadi foldernya adalah di dist
+# Maka kita harus mengganti folder utama menjadi folder dist juga
+What do you want to use as your public directory? `dist`
+
+# Tergantung dari project yang dibuat
+# Apabila ingin membuat single page application
+# Gunakan yes
+# Bila tidak gunakan no
+# Pada pembelajaran ini baik yes maupun no tidak ada dampak signifikan
+Configure as a single-page app? (rewrite all urls to /index.html)? `No`
+
+# Bisa juga sebenarnya menggunakan cara push-to-deploy dari github
+# Jadi ketika Github melakukan push, akan secara otomatis ter-hosting
+# Di luar scope pembelajaran ini
+Set up automatic builds and deploys with GitHub? `No`
+
+# Ketika kita melakukan npm run build, file index.html sudah dibentuk
+# Hal ini akan ditanyakan karena firebase sebenarnya ada template awal
+# untuk index.html sendiri
+# Kita skip, karena kita akan menggunakan index.html versinya kita
+File dist/index.html already exists. Overwrite? `No`
+```
+
+Apabila sudah memilih perintah di atas, akan muncul output seperti di bawah ini
+```bash
+i  Skipping write of dist/index.html
+
+i  Writing configuration info to firebase.json...
+i  Writing project information to .firebaserc...
+
+✔  Firebase initialization complete!
+```
+
+Dan itu artinya project kita sudah siap untuk di-hosting !
+
+Bagaimana cara untuk melakukan hostingnya?
+
+Kita cukup menggunakan perintah berikut:
+```bash
+firebase deploy
+```
+
+Apabila berhasil, akan muncul output seperti di bawah ini
+```bash
+=== Deploying to 'nama-project-id-yang-dipilih'...
+
+i  deploying hosting
+i  hosting[nama-project-id-yang-dipilih]: beginning deploy...
+i  hosting[nama-project-id-yang-dipilih]: found 6 files in dist
+✔  hosting[nama-project-id-yang-dipilih]: file upload complete
+i  hosting[nama-project-id-yang-dipilih]: finalizing version...
+✔  hosting[nama-project-id-yang-dipilih]: version finalized
+i  hosting[nama-project-id-yang-dipilih]: releasing new version...
+✔  hosting[nama-project-id-yang-dipilih]: release complete
+
+✔  Deploy complete!
+
+Project Console: https://console.firebase.google.com/project/nama-project-id-yang-dipilih/overview
+Hosting URL: https://nama-project-id-yang-dipilih.web.app
+```
+
+Perhatikan di atas sudah mendapatkan `Hosting URL`, silakan dibuka halaman tersebut, dan *voila*, kita sudah berhasil melakukan hosting aplikasi web yang kita buat sebelumnya, dengan domain *.web.app, dan sudah HTTPS !
+
+Selamat membuat aplikasi web dan ditunggu yah untuk hosting web yang Anda buat sendiri !
 ### Referensi
+- https://vitejs.dev/
+- https://svelte.dev/
+- https://tailwindcss.com/
 - https://nodejs.org/en/
 - https://www.petanikode.com/git-install/
 - https://firebase.google.com/docs/cli#install_the_firebase_cli
