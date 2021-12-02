@@ -9,7 +9,7 @@
 
 ### Persyaratan Dasar
 - Mengerti pembuatan website sederhana
-- Pernah menggunakan nodejs (Karena aplikasi yang dibuat pada pembelajaran ini menggunakan nodejs)
+- Pernah menggunakan `nodejs` (Karena aplikasi yang dibuat pada pembelajaran ini menggunakan `nodejs`)
 - Pernah menggunakan `git` (Karena aplikasi yang digunakan pada pembelajaran ini akan dicopy menggunakan `git`)
 
 ### Apa itu Firebase Hosting
@@ -62,7 +62,7 @@ Setelah package untuk menjalankan aplikasi sudah terpasang, kita sudah bisa menc
 npm run dev
 ```
 
-Apabila berhasil, maka seharusnya output dari menjalankan `npm run dev` adalah sebagai berikut:
+Apabila berhasil, maka output dari menjalankan `npm run dev` adalah sebagai berikut:
 
 ```bash
   vite v2.6.14 dev server running at:
@@ -75,7 +75,7 @@ Apabila berhasil, maka seharusnya output dari menjalankan `npm run dev` adalah s
 
 Kemudian kita bisa melihat aplikasi yang sudah jalan dalam mode development ini pada browser kita (http://localhost:3000)
 
-Apabila berjalan dengan lancar, seharusnya aplikasi yang akan muncul adalah sbb:
+Apabila berjalan dengan lancar, aplikasi yang akan muncul adalah sbb:
 
 ![Image Aplikasi](/assets/image01.png)
 
@@ -99,7 +99,7 @@ Langkah untuk membangun aplikasi ini adalah dengan menjalankan perintah berikut
 npm run build
 ```
 
-Apabila berhasil, maka seharusnya output dari menjalankan `npm run build` adalah sebagai berikut:
+Apabila berhasil, maka output dari menjalankan `npm run build` adalah sebagai berikut:
 
 ```text
 > vite build
@@ -116,6 +116,28 @@ dist/assets/vendor.2b6b50fb.js   3.22 KiB / gzip: 1.49 KiB
 ```
 
 (Ada kemungkinan angka yang ada di akhir bisa berbeda, abaikan saja bila berbeda yah)
+
+Perhatikan bahwa sampai pada langkah ini, semua file yang di-bangun ada pada folder `dist`
+
+Kemudian untuk menjalankan aplikasi yang sudah dibangun pada mode production ini, bisa menggunakan perintah berikut
+
+```bash
+npm run serve
+```
+
+Apabila berhasil, maka output dari menjalankan `npm run serve` adalah sebagai berikut:
+
+```bash
+> svelte-data-fetcher@0.0.0 serve
+> vite preview
+
+> Local: http://localhost:5000/
+> Network: use `--host` to expose
+```
+
+Kemudian kita bisa melihat aplikasi yang sudah jalan dalam mode production ini pada browser kita (http://localhost:5000)
+
+Perhatikan port yang digunakan berbeda (development pada port 3000 dan production di port 5000)
 
 ### Hosting Aplikasi
 
